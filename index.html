@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ministore</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous"
+     referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <title>Search</title>
+        <path fill="currentColor" d="M19 3C13.488 3 9 7.488 9 13c0 2.395.84 4.59 2.25 6.313L3.281 27.28l1.439 1.44l7.968-7.969A9.922 9.922 0 0 0 19 23c5.512 0 10-4.488 10-10S24.512 3 19 3zm0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8s-8-3.57-8-8s3.57-8 8-8z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 16 16">
+        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 16 16">
+        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      </symbol>
+      <svg xmlns="http://www.w3.org/2000/svg" id="chevron-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+      </svg>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="chevron-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="cart-outline" viewBox="0 0 16 16">
+        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="quality" viewBox="0 0 16 16">
+        <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
+        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="price-tag" viewBox="0 0 16 16">
+        <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z" />
+        <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="shield-plus" viewBox="0 0 16 16">
+        <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" />
+        <path d="M8 4.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V9a.5.5 0 0 1-1 0V7.5H6a.5.5 0 0 1 0-1h1.5V5a.5.5 0 0 1 .5-.5z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-fill" viewBox="0 0 16 16">
+        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-empty" viewBox="0 0 16 16">
+        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-half" viewBox="0 0 16 16">
+        <path d="M5.354 5.119 7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.548.548 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.52.52 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.58.58 0 0 1 .085-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.565.565 0 0 1 .162-.505l2.907-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.001 2.223 8 2.226v9.8z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="quote" viewBox="0 0 24 24">
+        <path fill="currentColor" d="m15 17l2-4h-4V6h7v7l-2 4h-3Zm-9 0l2-4H4V6h7v7l-2 4H6Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 0 1 1-1h3v-4h-3a5 5 0 0 0-5 5v2.01h-2l-.396 3.98h2.396v8.01Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="youtube" viewBox="0 0 32 32">
+        <path fill="currentColor" d="M29.41 9.26a3.5 3.5 0 0 0-2.47-2.47C24.76 6.2 16 6.2 16 6.2s-8.76 0-10.94.59a3.5 3.5 0 0 0-2.47 2.47A36.13 36.13 0 0 0 2 16a36.13 36.13 0 0 0 .59 6.74a3.5 3.5 0 0 0 2.47 2.47c2.18.59 10.94.59 10.94.59s8.76 0 10.94-.59a3.5 3.5 0 0 0 2.47-2.47A36.13 36.13 0 0 0 30 16a36.13 36.13 0 0 0-.59-6.74ZM13.2 20.2v-8.4l7.27 4.2Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="twitter" viewBox="0 0 256 256">
+        <path fill="currentColor" d="m245.66 77.66l-29.9 29.9C209.72 177.58 150.67 232 80 232c-14.52 0-26.49-2.3-35.58-6.84c-7.33-3.67-10.33-7.6-11.08-8.72a8 8 0 0 1 3.85-11.93c.26-.1 24.24-9.31 39.47-26.84a110.93 110.93 0 0 1-21.88-24.2c-12.4-18.41-26.28-50.39-22-98.18a8 8 0 0 1 13.65-4.92c.35.35 33.28 33.1 73.54 43.72V88a47.87 47.87 0 0 1 14.36-34.3A46.87 46.87 0 0 1 168.1 40a48.66 48.66 0 0 1 41.47 24H240a8 8 0 0 1 5.66 13.66Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="instagram" viewBox="0 0 256 256">
+        <path fill="currentColor" d="M128 80a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Zm48-136H80a56.06 56.06 0 0 0-56 56v96a56.06 56.06 0 0 0 56 56h96a56.06 56.06 0 0 0 56-56V80a56.06 56.06 0 0 0-56-56Zm40 152a40 40 0 0 1-40 40H80a40 40 0 0 1-40-40V80a40 40 0 0 1 40-40h96a40 40 0 0 1 40 40ZM192 76a12 12 0 1 1-12-12a12 12 0 0 1 12 12Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="linkedin" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M6.94 5a2 2 0 1 1-4-.002a2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="nav-icon" viewBox="0 0 16 16">
+        <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 16 16">
+        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
+        <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+      </symbol>
+    </svg>  
+
+  
+    </div>
+    
+    <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
+      <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/main-logo.png" class="logo">
+          </a>
+          <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <svg class="navbar-icon">
+              <use xlink:href="#navbar-icon"></use>
+            </svg>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+            <div class="offcanvas-header px-4 pb-0">
+              <a class="navbar-brand" href="index.html">
+                <img src="data:image/png;base64,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" class="logo">
+              </a>
+              <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+            </div>
+
+            <div class="offcanvas-body">
+              <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link me-4 active" href="">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="">Services</a>
+                </li>
+                
+
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="">Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="#company-services"><i id="counter" class="fa-solid fa-cart-shopping"></i></a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link " style="border-radius: 20px; box-shadow: 1px 1px 23px rgb(35, 53, 50); color: rgb(0, 0, 0); background-color: rgb(167, 204, 204);"  href="./account.html" target="_blank"> create a account <i class="fa-solid fa-user"></i></a>
+    
+        </ul>
+              
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+       
+              
+            
+            
+           
+          
+    <section id="mobile-products" class="product-store position-relative padding-large no-padding-top">
+      <div class="container">
+        <div class="row">
+          <div class="display-header d-flex justify-content-between pb-3">
+            <h2 class="display-7 text-dark text-uppercase"></h2>
+            <div style="margin-bottom: 40px; margin-right: 40% ;" class="btn-right">
+              <a href="shop.html" target="_blank" style=" color: aliceblue; background-color: rgb(65, 63, 63); box-shadow: 1px 1px 23px black; border: 1px solid black;" class="btn btn-medium btn-normal text-uppercase">add products</a>
+            </div> 
+          </div>
+          <div class="swiper product-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item1.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                     <button> <a href="#" id="incrementButton" class="  btn btn-medium btn-black">Add to cart</a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 10</a>
+
+                    </h3>
+                    
+                    <span class="item-price text-primary">$980</span>
+                  </div>
+                </div>
+
+              </div>
+              
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item2.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                     <div class="cart-button d-flex">
+                     <button> <a href="#" id="incrementButton" class="  btn btn-medium btn-black">Add to cart</a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 11</a>
+                    </h3>
+                    <span class="item-price text-primary">$1100</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item3.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 8</a>
+                    </h3>
+                    <span class="item-price text-primary">$780</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item4.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 13</a>
+                    </h3>
+                    <span class="item-price text-primary">$</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item5.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 12</a>
+                    </h3>
+                    <span class="item-price text-primary"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination position-absolute text-center"></div>
+    </section>
+    <section id="smart-watches" class="product-store padding-large position-relative">
+      <div class="container">
+        <div class="row">
+          <div class="display-header d-flex justify-content-between pb-3">
+          
+            
+              <div style="margin-bottom: 40px; margin-left:40% ;" class="btn-right">
+                <a href="shop.html" target="_blank" style=" color: aliceblue; background-color: rgb(65, 63, 63); box-shadow: 1px 1px 23px black; border: 1px solid black;" class="btn btn-medium btn-normal text-uppercase">add products</a>
+            
+            </div>
+          </div>
+          <div class="swiper product-watch-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item6.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Pink watch</a>
+                    </h3>
+                    <span class="item-price text-primary">$870</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item7.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Heavy watch</a>
+                    </h3>
+                    <span class="item-price text-primary">$680</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item8.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">spotted watch</a>
+                    </h3>
+                    <span class="item-price text-primary">$750</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item9.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">black watch</a>
+                    </h3>
+                    <span class="item-price text-primary">$650</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item10.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">black watch</a>
+                    </h3>
+                    <span class="item-price text-primary">$750</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination position-absolute text-center"></div>
+    </section>
+    <section id="yearly-sale" class="bg-light-blue overflow-hidden mt-5 padding-xlarge" style="background-image: url('images/single-image1.png');background-position: right; background-repeat: no-repeat;">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="col-md-6 col-sm-12">
+          <div class="text-content offset-4 padding-medium">
+            <h3>10% off</h3>
+            <h2 style="color: rgb(22, 40, 201);" class="display-2 pb-5 text-uppercase ">New year sale</h2>
+            <a href="shop.html" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Sale</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          
+        </div>
+      </div>
+    </section>
+    
+            
+           
+
+    
+              
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script src="saad.js"></script>
+  </body>
+</html>
